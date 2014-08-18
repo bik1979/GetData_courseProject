@@ -22,7 +22,8 @@ fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag,
 fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals).
 
   From all these signals, a set of variables (described in the original dataset)
-was estimated. The final dataset created in this project contains only those variables in the initial datasets which refer to measurements on the mean or the standard deviation.
+was estimated. The final dataset created in this project contains only those variables in the initial datasets which refer to measurements on the mean or the standard deviation. 
+All features are normalized and bounded within [-1,1].
 
   In order to make the variable names a bit cleaner, the parenthesis after mean()
 and std() in the original data sets variables, have been removed and the minus signs

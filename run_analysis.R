@@ -1,31 +1,30 @@
-# the script looks for the data in "./data" folder. if the folder does not exist
-# data is downloaded and extracted to "./data" folder
-if (!file.exists("data/")) {
+# the script looks for the data in "./UCI HAR Dataset/" folder. if the folder does not exist
+# the zip file is downloaded and extracted in theb´working directory
+if (!file.exists("UCI HAR Dataset/")) {
 	fileName <- "UCI_HAR_Dataset.zip"
 	url <- "https://d396qusza40orc.cloudfront.net/getdata/projectfiles/UCI%20HAR%20Dataset.zip"
 	download.file(url, fileName, method="curl")
 	unzip(fileName)
-	file.rename("UCI HAR Dataset/", "data/")
 }
 
 
 # read feature names, get the indexes for std() and mean() measures
-features <- read.table("data/features.txt")
+features <- read.table("UCI HAR Dataset/features.txt")
 featuresIdx <- grep("\\-mean\\(|\\-std\\(", features[, 2])
 
 # read training datasets, put together subject and activity with measures
 # select only the columns containing measurements of mean or std, stored in featuresIdx
-x.train <- read.table("data/train/X_train.txt")
-y.train <- read.table("data/train/y_train.txt")
-sub.train <- read.table("data/train/subject_train.txt")
+x.train <- read.table("UCI HAR Dataset/train/X_train.txt")
+y.train <- read.table("UCI HAR Dataset/train/y_train.txt")
+sub.train <- read.table("UCI HAR Dataset/train/subject_train.txt")
 data.train <- cbind(sub.train, y.train)
 data.train <- cbind(data.train, x.train[, featuresIdx])
 
 # read test datasets, put together subject and activity with measures
 # select only the columns containing measurements of mean or std, stored in featuresIdx
-x.test <- read.table("data/test/X_test.txt")
-y.test <- read.table("data/test/y_test.txt")
-sub.test <- read.table("data/test/subject_test.txt")
+x.test <- read.table("UCI HAR Dataset/test/X_test.txt")
+y.test <- read.table("UCI HAR Dataset/test/y_test.txt")
+sub.test <- read.table("UCI HAR Dataset/test/subject_test.txt")
 data.test <- cbind(sub.test, y.test)
 data.test <- cbind(data.test, x.test[, featuresIdx])
 
@@ -33,7 +32,7 @@ data.test <- cbind(data.test, x.test[, featuresIdx])
 data.tidy <- rbind(data.train, data.test)
 
 # give descriptive activity names to name the activities in the data set
-activities <- read.table("data/activity_labels.txt", stringsAsFactors = TRUE)
+activities <- read.table("UCI HAR Dataset/activity_labels.txt", stringsAsFactors = TRUE)
 data.tidy$activity <- activities[data.full$activity, 2]
 
 # assign descriptive variable names to variables

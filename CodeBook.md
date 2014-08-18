@@ -30,7 +30,14 @@ and std() in the original data sets variables, have been removed and the minus s
 have been wether replaced with points if found in the middle of a name, or removed
 if found at the end of a variable name.
 
-  Besides these measurements, the final dataset provides two additional columns:  
+  Finally, an important detail to remark is that, whereas the original dataset 
+provides a set of measurements along time, sampled in fixed-width sliding windows, 
+the final dataset delivered in this project takes the mean values of each of the 
+variables for each activity and for each subject. Therefore, the number of rows 
+and also the size of the dataset is considerably reduced compared to the initial dataset.
+  
+  Besides the values of the above estimated features, the final dataset provides two 
+additional columns:  
   
 * activity, contains a descriptive name for the activity beeing performed by the subject.
 Can be one of the following: LAYING, SITTING, STANDING, WALKING, WALKING_DOWNSTAIRS,
@@ -46,14 +53,20 @@ been added as new columns (i.e. variables) to the measurements data sets (X_xxx.
 2. Training and test sets have been merged to create only one dataset.
 
 3. For each of the measurements provided in the initial data sets, only the measurements
-on the mean and standard deviation have been extracted.
+on the mean and standard deviation have been extracted. The rest of variables are
+dropped.
 
-4. Variable names in the final data set have been given descriptive variable names. These
-names have been read from `features.txt`, then cleaned, removing parenthesis and
-replacing minus signs with points, which is a more common format used in R.
+4. Variable names in the final data set have been given descriptive variable names. 
+These names have been read from `features.txt`, then cleaned, removing parenthesis
+ and replacing minus signs with points, which is a more common format used in R.
 
-5. Activities in the final data set have been assigned descriptive names. These
-names have been read from the file `activity_labels.txt` and linked then with the
-final dataset.
+5. Activities in the final data set have been assigned descriptive names instead
+of numeric identifiers. These names have been read from the file `activity_labels.txt` 
+and linked then with the generated tidy dataset.
+
+6. A new dataset is created from the previously generated tidy dataset, with the 
+average of each variable for each activity and each subject. 
+
+7. The new dataset is written to a text file `tidy_data_avg.txt`
 
   

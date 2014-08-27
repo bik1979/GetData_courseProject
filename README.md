@@ -16,6 +16,9 @@ will download the zip file and unzip the files to  working directory. Therefore,
 if you already have the dataset and don't want to download it again, just the folder 
 *UCI HAR Dataset* the project folder.
 
-* The script will then perform the all the required operations and data transformations on the original data set and when it finishes, the tidy dataset `tidy_data_avg.txt` will be created in the same directory where the script is.
+* The script will then perform all the required operations and data transformations on the original data set and when it finishes, the tidy dataset `tidy_data_avg.txt` will be created in the same directory where the script is.
 
 * A code book for the generated dataset is available [here](CodeBook.md)
+
+* More details about the operations performed can be found on the script file and in 
+the code book.
